@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+ln -s .zshrc ~/
+ln -s .zshenv ~/
+ln -s .gitconfig ~/
+
+source "$HOME/.zshrc"
