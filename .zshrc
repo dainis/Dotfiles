@@ -1,8 +1,3 @@
-ZSH=$HOME/.oh-my-zsh
-
-ZSH_THEME='agnoster'
-
-DEFAULT_USER='dainis'
 
 # Set up the prompt
 
@@ -50,5 +45,13 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+ZSH=$HOME/.oh-my-zsh
+
+plugins=(git dircycle git-extras npm node-api nyan redis-cli sublime url-tools)
+
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zshenv
+
+ZSH_THEME='agnoster'
+
+DEFAULT_USER='dainis'
