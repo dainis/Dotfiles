@@ -2,6 +2,7 @@
 
 ln -s .zshrc ~/
 ln -s .zshenv ~/
+ln -s .oh-my-zsh ~/
 ln -s .gitconfig ~/
 
 source "$HOME/.zshrc"
