@@ -7,3 +7,5 @@ ln -s $PWD/.gitconfig ~/
 ln -s $PWD/.tmux.conf ~/
 
 source "$HOME/.zshrc"
+
+tmux source-file "$HOME/.tmux.conf"
