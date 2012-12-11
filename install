@@ -1,8 +1,10 @@
 #!/bin/zsh
 
-ln -s .zshrc ~/
-ln -s .zshenv ~/
-ln -s .oh-my-zsh ~/
-ln -s .gitconfig ~/
+d="$PWD"
+
+ln -s "$d/".zshrc ~/
+ln -s "$d/".zshenv ~/
+ln -s "$d/".oh-my-zsh ~/
+ln -s "$d/".gitconfig ~/
 
 source "$HOME/.zshrc"

@@ -34,6 +34,4 @@ plugins=(git dircycle git-extras npm node-api nyan redis-cli sublime url-tools)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zshenv
 
-ZSH_THEME='agnoster'
-
 DEFAULT_USER='dainis'
