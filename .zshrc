@@ -35,3 +35,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.zshenv
 
 DEFAULT_USER='dainis'
+
+# If not running interactively, do not do anything
+[[ $- != *i* ]] && return
+[[ $TERM != screen* ]] && exec tmux

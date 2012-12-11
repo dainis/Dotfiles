@@ -1,10 +1,9 @@
 #!/bin/zsh
 
-d="$PWD"
-
-ln -s "$d/".zshrc ~/
-ln -s "$d/".zshenv ~/
-ln -s "$d/".oh-my-zsh ~/
-ln -s "$d/".gitconfig ~/
+ln -s $PWD/.zshrc ~/
+ln -s $PWD/.zshenv ~/
+ln -s $PWD/.oh-my-zsh ~/
+ln -s $PWD/.gitconfig ~/
+ln -s $PWD/.tmux.conf ~/
 
 source "$HOME/.zshrc"
