@@ -5,7 +5,7 @@ ln -s $PWD/.zshenv ~/
 ln -s $PWD/.oh-my-zsh ~/
 ln -s $PWD/.gitconfig ~/
 ln -s $PWD/.tmux.conf ~/
-
+ln -s $PWD/.vimrc ~/
 source "$HOME/.zshrc"
 
 tmux source-file "$HOME/.tmux.conf"
