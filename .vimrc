@@ -12,3 +12,11 @@ set visualbell
 set noerrorbells 
 set nobackup
 set noswapfile
+set encoding=utf-8
+
+call pathogen#infect()
+syntax on
+filetype plugin indent on
+
+set background=dark
+colorscheme solarized
