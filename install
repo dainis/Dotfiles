@@ -1,11 +1,15 @@
 #!/bin/zsh
 
+mkdir -p ~/.vim/
+
 ln -s $PWD/.zshrc ~/
 ln -s $PWD/.zshenv ~/
 ln -s $PWD/.oh-my-zsh ~/
 ln -s $PWD/.gitconfig ~/
 ln -s $PWD/.tmux.conf ~/
 ln -s $PWD/.vimrc ~/
+ln -s $PWD/.vim/bundle ~/.vim/bundle
+
 source "$HOME/.zshrc"
 
 tmux source-file "$HOME/.tmux.conf"
