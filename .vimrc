@@ -20,3 +20,5 @@ filetype plugin indent on
 
 set background=dark
 colorscheme solarized
+
+let NERDTreeShowHidden=1
