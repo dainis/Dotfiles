@@ -9,6 +9,7 @@ ln -s $PWD/.gitconfig ~/
 ln -s $PWD/.tmux.conf ~/
 ln -s $PWD/.vimrc ~/
 ln -s $PWD/.vim/bundle ~/.vim/bundle
+ln -s $PWD/.Xdefaults ~/
 
 source "$HOME/.zshrc"
 
