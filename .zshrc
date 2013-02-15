@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="clean"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -29,7 +29,7 @@ ZSH_THEME="agnoster"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-plugins=(git dircycle git-extras npm node-api nyan redis-cli sublime url-tools)
+plugins=(git dircycle git-extras npm node-api nyan redis-cli sublime url-tools archlinux)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zshenv
