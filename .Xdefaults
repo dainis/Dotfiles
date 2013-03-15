@@ -1,6 +1,8 @@
 xft.dpi:96
+xft.antialias: true
 
 urxvt*depth:32
+urxvt*meta8:true
 
 !Molokai theme
 urxvt*background: #101010
