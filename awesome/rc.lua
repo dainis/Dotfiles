@@ -53,6 +53,22 @@ editor_cmd = terminal .. " -e " .. editor
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
+function run_once(prg)
+	awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. ")")
+end
+
+do
+	local cmds = { 
+	    "urxvt",
+		"google-chrome",
+		"skype",
+	}
+    --and so on...
+    for _,i in pairs(cmds) do
+        run_once(i)
+	end
+end
+
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
@@ -84,7 +100,7 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "main", "web", "skype", "misc1", "misc2", "misc3" }, s, layouts[1])
+    tags[s] = awful.tag({ "1:main", "2:web", "3:skype", "4:misc1", "5:misc2", "6:misc3" }, s, layouts[1])
 end
 -- }}}
 
