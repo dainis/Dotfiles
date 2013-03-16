@@ -398,7 +398,9 @@ awful.rules.rules = {
     { rule = { class = "Skype" },
       properties = { tag = tags[1][3] } },
     { rule = { class = "URxvt" },
-      properties = { tag = tags[1][1] } },
+      properties = { tag = tags[1][1],
+                     maximized_horizontal = true,
+				     maximized_vertical = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
