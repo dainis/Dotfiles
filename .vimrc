@@ -1,3 +1,4 @@
+set nocompatible
 set number
 set tabstop=4
 set autoindent
@@ -14,13 +15,23 @@ set nobackup
 set noswapfile
 set encoding=utf-8
 
-map <C-t><up> :tabr<cr>
-map <C-t><down> :tabl<cr>
-map <C-t><left> :tabp<cr>
-map <C-t><right> :tabn<cr>
+map <C-h> :tabp<cr>
+map <C-l> :tabn<cr>
+
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 call pathogen#infect()
 syntax on
 filetype plugin indent on
 
 let NERDTreeShowHidden=1
+set cursorline
+set colorcolumn=160
+set hlsearch
+
+syntax on
+filetype plugin on
+filetype indent on
