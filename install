@@ -1,6 +1,13 @@
 #!/bin/zsh
 
 mkdir -p ~/.vim/
+mkdir -p ~/.config/
+
+git submodule init
+git submodule update
+
+mkdir -p ~/.vim/autoload ~/.vim/bundle 
+curl -Sso ~/.vim/autoload/pathogen.vim https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 ln -s $PWD/.zshrc ~/
 ln -s $PWD/.zshenv ~/
@@ -8,7 +15,9 @@ ln -s $PWD/.oh-my-zsh ~/
 ln -s $PWD/.gitconfig ~/
 ln -s $PWD/.tmux.conf ~/
 ln -s $PWD/.vimrc ~/
-ln -s $PWD/.vim/bundle ~/.vim/bundle
+ln -s $PWD/.vim ~/.vim
+ln -s $PWD/.Xdefaults ~/
+ln -s $PWD/awesome ~/.config/
 
 source "$HOME/.zshrc"
 

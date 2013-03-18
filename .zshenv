@@ -11,3 +11,6 @@ alias l='ls'
 alias knife='nocorrect knife'
 
 REPORTTIME=10
+
+GOPATH=~/golang
+PATH=$PATH:~/golang/bin
