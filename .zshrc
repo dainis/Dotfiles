@@ -29,7 +29,7 @@ ZSH_THEME="agnoster"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-plugins=(git dircycle git-extras npm node-api nyan redis-cli sublime url-tools)
+plugins=(git dircycle git-extras npm node nyan redis-cli sublime url-tools knife vagrant)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zshenv
