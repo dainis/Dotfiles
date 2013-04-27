@@ -1,6 +1,6 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
+	url = git@github.com:dainis/oh-my-zsh.git 
 [submodule ".vim/bundle/vim-node-complete"]
 	path = .vim/bundle/vim-node-complete
 	url = git://github.com/myhere/vim-nodejs-complete.git
