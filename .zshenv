@@ -8,6 +8,7 @@ fi
 
 alias ll='ls -al'
 alias l='ls'
+alias knife='nocorrect knife'
 
 REPORTTIME=10
 
