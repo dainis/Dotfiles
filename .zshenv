@@ -17,6 +17,10 @@ PATH=$PATH:~/golang/bin
 if [ -f /opt/Xilinx/14.4/ISE_DB/settings64.sh ]
 then
 	source /opt/Xilinx/14.4/ISE_DS/settings64.sh
+	PATH=$PATH:/opt/Xilinx/14.4/ISE_DS/ISE/bin/lin64
+fi
+if [ -f ~/.zshenv_local ]
+then
+	source ~/.zshenv_local
 fi
 
-PATH=$PATH:/opt/Xilinx/14.4/ISE_DS/ISE/bin/lin64
