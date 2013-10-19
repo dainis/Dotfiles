@@ -17,3 +17,8 @@ GOPATH=~/golang
 GOROOT=~/go
 PATH=$PATH:~/golang/bin
 
+if [ -f ~/.zshenv_local ]
+then
+	source ~/.zshenv_local
+fi
+
