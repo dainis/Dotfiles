@@ -31,6 +31,10 @@ ZSH_THEME="clean"
 
 plugins=(git dircycle git-extras npm node nyan redis-cli sublime url-tools knife vagrant zsh-syntax-highlighting ssh-agent)
 
+zstyle :omz:plugins:ssh-agent identities id_rsa google_compute_engine 
+
+zstyle :omz:plugins:ssh-agent agent-forwarding on
+
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zshenv
 
