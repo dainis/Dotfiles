@@ -13,7 +13,9 @@ set visualbell
 set noerrorbells 
 set nobackup
 set noswapfile
+set noundofile
 set encoding=utf-8
+set undodir=$HOME/.vim/undo//
 
 map <C-h> :tabp<cr>
 map <C-l> :tabn<cr>
