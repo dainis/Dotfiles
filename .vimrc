@@ -16,6 +16,7 @@ set noswapfile
 set noundofile
 set encoding=utf-8
 set undodir=$HOME/.vim/undo//
+set incsearch
 
 map <C-h> :tabp<cr>
 map <C-l> :tabn<cr>
@@ -28,6 +29,8 @@ imap <up> <nop>
 imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
+
+nnoremap <CR> :noh<CR><CR>
 
 call pathogen#infect()
 syntax on
