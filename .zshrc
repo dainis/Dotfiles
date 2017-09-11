@@ -29,9 +29,9 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-plugins=(git dircycle git-extras npm node nyan redis-cli sublime url-tools knife vagrant zsh-syntax-highlighting ssh-agent)
+plugins=(git dircycle git-extras npm node nyan redis-cli url-tools zsh-syntax-highlighting ssh-agent)
 
-zstyle :omz:plugins:ssh-agent identities id_rsa google_compute_engine 
+zstyle :omz:plugins:ssh-agent identities id_rsa 
 
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
