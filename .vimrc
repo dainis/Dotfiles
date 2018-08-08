@@ -40,6 +40,7 @@ let NERDTreeShowHidden=1
 set cursorline
 set colorcolumn=160
 set hlsearch
+set updatetime=100
 
 syntax on
 filetype plugin on
