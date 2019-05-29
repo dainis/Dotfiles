@@ -43,3 +43,10 @@ DEFAULT_USER='dainis'
 # If not running interactively, do not do anything
 [[ $- != *i* ]] && return
 [[ $TERM != screen* ]] && exec tmux
+
+[ -s "/home/dainis/.nvm/nvm.sh" ] && . "/home/dainis/.nvm/nvm.sh" # This loads nvm
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# added by travis gem
+[ -f /home/dainis/.travis/travis.sh ] && source /home/dainis/.travis/travis.sh

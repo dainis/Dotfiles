@@ -1,4 +1,5 @@
 -- Standard awesome library
+-- "
 local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
@@ -59,8 +60,7 @@ end
 
 do
 	local cmds = { 
-	    "urxvt",
-		"skype",
+	    "urxvt"
 	}
     --and so on...
     for _,i in pairs(cmds) do
@@ -209,8 +209,8 @@ for s = 1, screen.count() do
 	local weatherwidget = wibox.widget.textbox()
 	vicious.register(weatherwidget, vicious.widgets.weather, 
 	function (widget, args) 
-		return "Temp:" ..  args["{tempc}"] .. "*C"
-	end, 61, "EVRA")
+		return "T:" ..  args["{tempc}"] .. "°C"
+	end, 605, "EVRA")
 	right_layout:add(weatherwidget)
 
 	local memwidget = wibox.widget.textbox()
@@ -220,6 +220,10 @@ for s = 1, screen.count() do
     local  cpuwidget = wibox.widget.textbox()
     vicious.register(cpuwidget, vicious.widgets.cpu, "CPU:$1%", 6)
     right_layout:add(cpuwidget)
+
+	local thermalwidget  = wibox.widget.textbox()
+	vicious.register(thermalwidget, vicious.widgets.thermal, " $1°C", 20, { "coretemp.0/hwmon/hwmon0", "core"})
+	right_layout:add(thermalwidget)
 		
 	local batterywidget = wibox.widget.textbox()
 	vicious.register(batterywidget, vicious.widgets.bat, "Bat:$3($1 $2%)", 13, "BAT0");
@@ -253,6 +257,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+	awful.key({modkey,            }, "F1",     function () awful.screen.focus(2) end),
+	awful.key({modkey,            }, "F2",     function () awful.screen.focus(1) end),
+	awful.key({modkey,            }, "F3",     function () awful.screen.focus(3) end),
+	awful.key({ modkey, "Shift"   }, "F1", function (c) awful.client.movetoscreen(c, 2) end),
+	awful.key({ modkey, "Shift"   }, "F2", function (c) awful.client.movetoscreen(c, 1) end),
+	awful.key({ modkey, "Shift"   }, "F3", function (c) awful.client.movetoscreen(c, 3) end),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -264,7 +274,6 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -298,12 +307,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen.index]:run() end),
 
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
-                  mypromptbox[mouse.screen].widget,
+                  mypromptbox[mouse.screen.index].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
               end),
@@ -344,28 +353,28 @@ for i = 1, keynumber do
     globalkeys = awful.util.table.join(globalkeys,
         awful.key({ modkey }, "#" .. i + 9,
                   function ()
-                        local screen = mouse.screen
+                        local screen = mouse.screen.index
                         if tags[screen][i] then
                             awful.tag.viewonly(tags[screen][i])
                         end
                   end),
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
-                      local screen = mouse.screen
+                      local screen = mouse.screen.index
                       if tags[screen][i] then
                           awful.tag.viewtoggle(tags[screen][i])
                       end
                   end),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
-                      if client.focus and tags[client.focus.screen][i] then
-                          awful.client.movetotag(tags[client.focus.screen][i])
+                      if client.focus and tags[client.focus.screen.index][i] then
+                          awful.client.movetotag(tags[client.focus.screen.index][i])
                       end
                   end),
         awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
                   function ()
-                      if client.focus and tags[client.focus.screen][i] then
-                          awful.client.toggletag(tags[client.focus.screen][i])
+                      if client.focus and tags[client.focus.screen.index][i] then
+                          awful.client.toggletag(tags[client.focus.screen.index][i])
                       end
                   end))
 end
@@ -395,11 +404,11 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Google-chrome" },
-      properties = { tag = tags[1][2] } },
-    { rule = { class = "Skype" },
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[3][2] } },
+    { rule = { class = "sublime_text" },
+      properties = { tag = tags[1][6] } },
     { rule = { class = "URxvt" },
-      properties = { tag = tags[1][1],
+      properties = { tag = tags[2][1],
                      maximized_horizontal = true,
 				     maximized_vertical = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
@@ -472,4 +481,24 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- }}}
+
+-- {{{ Function definitions
+
+-- scan directory, and optionally filter outputs
+function scandir(directory, filter)
+    local i, t, popen = 0, {}, io.popen
+    if not filter then
+        filter = function(s) return true end
+    end
+    print(filter)
+    for filename in popen('ls -a "'..directory..'"'):lines() do
+        if filter(filename) then
+            i = i + 1
+            t[i] = filename
+        end
+    end
+    return t
+end
+
 -- }}}

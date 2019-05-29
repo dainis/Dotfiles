@@ -13,11 +13,8 @@ alias knife='nocorrect knife'
 REPORTTIME=10
 
 EDITOR=vim
-GOPATH=~/golang
-GOROOT=~/go
-PATH=$PATH:~/golang/bin
 
-if [ -f ~/.zshenv_local ]
+if [ -e ~/.zshenv_local ]
 then
 	source ~/.zshenv_local
 fi
