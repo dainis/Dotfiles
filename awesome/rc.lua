@@ -250,10 +250,13 @@ root.buttons(awful.util.table.join(
 ))
 -- }}}
 
+lockscreen = function() awful.util.spawn("slock") end
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-	awful.key({}, "Print", function() awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
-	awful.key({"Control", }, "Print", function() awful.util.spawn("scrot -u -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+	awful.key({                   }, "Print", function() awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+	awful.key({"Control",         }, "Print", function() awful.util.spawn("scrot -u -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
+	awful.key({ modkey, "Shift"   }, "Escape",  lockscreen),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
@@ -403,8 +406,6 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    { rule = { class = "Google-chrome" },
-      properties = { tag = tags[3][2] } },
     { rule = { class = "sublime_text" },
       properties = { tag = tags[1][6] } },
     { rule = { class = "URxvt" },
