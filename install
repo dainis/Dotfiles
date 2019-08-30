@@ -17,6 +17,7 @@ ln -s $PWD/.vimrc ~/
 ln -s $PWD/.vim ~/.vim
 ln -s $PWD/.Xdefaults ~/
 ln -s $PWD/awesome ~/.config/
+ln -s $PWD/.gitignore_global ~/.gitignore_global
 
 source "$HOME/.zshrc"
 
